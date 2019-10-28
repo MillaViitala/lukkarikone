@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Question list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Questions</h1>
+	<table>
+		<tr>
+			<th>Questions</th>
+
+		</tr>
+		<tr th:each="question : ${questions}">
+			<td th:text="${question.qtitle}"></td>
+			<td><a th:href="@{/delete/{id}(id=${question.id})}">Delete</a></td>
+		</tr>
+	</table>
+		<a href="/add">Add Student</a> 
+</body>
+</html>
