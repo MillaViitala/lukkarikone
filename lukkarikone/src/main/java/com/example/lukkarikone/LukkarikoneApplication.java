@@ -25,11 +25,11 @@ public class LukkarikoneApplication {
 		return (args) -> {
 			log.info("save questions");
 			
-			qrepository.save(new Question("Kysymys 1"));
-			qrepository.save(new Question("Kysymys 2"));
-			qrepository.save(new Question("Kysymys 3"));
-			qrepository.save(new Question("Kysymys 4"));
-			qrepository.save(new Question("Kysymys 5"));
+			qrepository.save(new Question("Monennellako vuosikurssilla olet?"));
+			qrepository.save(new Question("Millä seuraavista mieluiten etsit kurssin ajankohdan lukkarikoneesta: (Monivalinta -vaihtoehdot tulossa)"));
+			qrepository.save(new Question("Kuinka työlääksi koet palvelun käyttämisen? (Monivalinta)"));
+			qrepository.save(new Question("Kuinka nopeasti/tehokkaasti saat suoritettua halutun lopputuloksen palvelusta? (Monivalinta)"));
+			qrepository.save(new Question("Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)"));
 			
 			log.info("get all questions");
 			for (Question question : qrepository.findAll()) {
