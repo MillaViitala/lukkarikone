@@ -1,4 +1,4 @@
 # Lukkarikone
 
-##Suunnittelukaaviot
-*[Kaaviot](OhjelmistoprojektiDocuments/Kaaviot.docx)
+## Suunnittelukaaviot
+- [Kaaviot](OhjelmistoprojektiDocuments/Kaaviot.docx)
