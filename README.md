@@ -1,3 +1,3 @@
 # Lukkarikone
 
-[Käsitekaavio](documents/Ohjelmistoprojekti/Kaaviot.docx)
+[Kaaviot](documents/Ohjelmistoprojekti/Kaaviot.docx)
