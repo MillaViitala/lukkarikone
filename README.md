@@ -1,3 +1,3 @@
 # Lukkarikone
 
-[Kaaviot](documents/Ohjelmistoprojekti/Kaaviot.docx)
+[Kaaviot](OhjelmistoprojektiDocuments/Kaaviot.docx)
