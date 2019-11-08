@@ -1,7 +1,8 @@
 package com.example.lukkarikone.web;
 
+import com.example.lukkarikone.domain.Question;
+import com.example.lukkarikone.domain.QuestionRepository;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.lukkarikone.domain.Question;
-import com.example.lukkarikone.domain.QuestionRepository;
-
 @CrossOrigin
 @Controller
 public class SurveyController {
 
 	@Autowired
 	private QuestionRepository qrepository;
+
+	// REST homepage
+	@RequestMapping(value = "/homepage")
+	public String homePage(Model model) {
+		return "homepage";
+	}
 
 	// Näytä kaikki kysymykset
 	@RequestMapping(value = "/questionlist")
@@ -53,5 +57,21 @@ public class SurveyController {
     public String deleteQuestion(@PathVariable("id") Long questionId, Model model) {
     	qrepository.deleteById(questionId);
         return "redirect:../questionlist";
-    }     
+    }
+
+//    FIX THESE
+//    //update: tallenna kysymys
+//    @RequestMapping(value = "/questions", method = RequestMethod.POST)
+//    public String save(@RequestBody String question, Model model){
+//        Question q = new Question(question);
+//        qrepository.save(q);
+//        return "redirect:../homepage";
+//    }
+//    
+//    // Poista kysymys
+//    @RequestMapping(value = "/questions/{id}", method = RequestMethod.DELETE)
+//    public String deleteQuestion(@PathVariable("id") Long questionId, Model model) {
+//    	qrepository.deleteById(questionId);
+//        return "redirect:../homepage";
+//    }
 }
