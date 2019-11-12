@@ -2,4 +2,5 @@
 
 ## Suunnittelukaaviot
 - [Kaaviot](OhjelmistoprojektiDocuments/Kaaviot.docx)
-Käsitekaavio(OhjelmistoprojektiDocuments/Käistekaavio.JPG)
+
+- [Käsitekaavio] (OhjelmistoprojektiDocuments/Käistekaavio.JPG)
