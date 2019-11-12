@@ -40,7 +40,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [qtitle=" + qtitle + "]";
+		return "Question [id= " + id + ", qtitle=" + qtitle + "]";
 	}
 
 }
