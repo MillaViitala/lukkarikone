@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AnswerRepository extends CrudRepository<Answer, Long>{
 
-	List<Answer> findByAnswerText(String text);
+	List<Answer> findByText(String text);
 }
