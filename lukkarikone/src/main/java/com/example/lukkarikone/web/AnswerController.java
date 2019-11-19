@@ -40,8 +40,8 @@ public class AnswerController {
 	
 	@PostMapping(value = "/questions/{questionId}/answers", consumes = "application/json")
     public ResponseEntity saveAnswer(@RequestBody Answer answer, Model model) {
-        arepository.save(new Answer(answer.getText()));
-        return new ResponseEntity<>("Answer saved!", HttpStatus.OK);
+        arepository.save(answer);
+        return (ResponseEntity) arepository;
     }
 	
 	
