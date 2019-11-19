@@ -15,15 +15,16 @@ public class Answer {
 	private String text;
 	
 	@JoinColumn(name = "id")
-	private Question Id;
+	private Question id;
 	
 	public Answer() {
 		
 	}
 	
-	public Answer(String text) {
+	public Answer(String text, Question id) {
 		super();
 		this.text = text;
+		this.id = id;
 		
 	}
 
@@ -44,16 +45,16 @@ public class Answer {
 	}
 
 	public Question getId() {
-		return Id;
+		return id;
 	}
 
 	public void setQuestion(Question Id) {
-		this.Id = Id;
+		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + answerId + ", text=" + text + ", QuestionId=" + Id + "]";
+		return "Answer [id=" + answerId + ", text=" + text + ", QuestionId=" + id + "]";
 	}
 
 }
