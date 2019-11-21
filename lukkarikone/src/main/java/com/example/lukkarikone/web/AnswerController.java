@@ -37,22 +37,14 @@ public class AnswerController {
 		
 	}
 	
-	// Tallenna vastaus
-	
-	
-	
+	// Tallenna vastaus TOIMIII!!!!!
+
 	@RequestMapping(value = "/questions/{questionId}/answers", method = RequestMethod.POST)
 	public @ResponseBody Answer saveAnswerRest(@RequestBody Answer answer) {
 		return arepository.save(answer);
 		}
 	
-	/*
-	 * // RESTful service to save new car 
-    @RequestMapping(value="/cars", method = RequestMethod.POST)
-    public @ResponseBody Car saveCarRest(@RequestBody Car car) {	
-    	return carRepository.save(car);
-    }
-	 */
+
 	
 	
 }

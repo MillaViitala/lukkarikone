@@ -17,7 +17,7 @@ public class Answer {
 	
 	@ManyToOne
 	@JoinColumn(name = "id")
-	private Question id;
+	private Question question;
 	
 	public Answer() {
 		
@@ -26,7 +26,7 @@ public class Answer {
 	public Answer(String text, Question id) {
 		super();
 		this.text = text;
-		this.id = id;
+		this.question = question;
 		
 	}
 
@@ -46,17 +46,17 @@ public class Answer {
 		this.text = text;
 	}
 
-	public Question getId() {
-		return id;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuestion(Question Id) {
-		this.id = id;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + answerId + ", text=" + text + ", QuestionId=" + id + "]";
+		return "Answer [id=" + answerId + ", text=" + text + ", QuestionId=" + question + "]";
 	}
 
 }
