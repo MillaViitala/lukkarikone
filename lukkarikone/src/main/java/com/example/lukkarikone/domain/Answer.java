@@ -49,10 +49,11 @@ public class Answer {
 	public Question getQuestion() {
 		return question;
 	}
-
-	public void setQuestionById(Question id) {
-		this.question = id;
+	
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
+
 
 	@Override
 	public String toString() {

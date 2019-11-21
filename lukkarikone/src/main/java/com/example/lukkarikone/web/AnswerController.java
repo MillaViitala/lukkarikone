@@ -4,6 +4,7 @@ import com.example.lukkarikone.domain.Answer;
 
 import com.example.lukkarikone.domain.AnswerRepository;
 import com.example.lukkarikone.domain.Question;
+import com.example.lukkarikone.domain.QuestionRepository;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class AnswerController {
 	
 	@Autowired
 	private AnswerRepository arepository; 
+	@Autowired
+	private QuestionRepository qrepository; 
 	
 	// Hae vastaukset kysymykselle
 	
@@ -36,11 +39,12 @@ public class AnswerController {
 		
 	}
 	
-	// Tallenna vastaus TOIMIII!!!!!
+	// Tallenna vastaus 
 
 	@RequestMapping(value = "/questions/{questionId}/answers", method = RequestMethod.POST)
-	public @ResponseBody Answer saveAnswerRest(@PathVariable("id") Question id, @RequestBody Answer answer) {
-		answer.setQuestionById(id);
+	public @ResponseBody Answer saveAnswerRest(@PathVariable("questionId") Long questionId, @RequestBody Answer answer) {
+		Optional<Question> question = qrepository.findById(questionId);
+		answer.setQuestion(question.get());
 		return arepository.save(answer);
 		}
 	
