@@ -32,7 +32,6 @@ public class AnswerController {
 	
 	@RequestMapping(value = "questions/{questionId}/answers", method = RequestMethod.GET)
 	public @ResponseBody Optional<Answer> getAnswer(@PathVariable ("id") Long id, Model model) {
-		
 		return arepository.findById(id);
 		
 	}
@@ -40,7 +39,8 @@ public class AnswerController {
 	// Tallenna vastaus TOIMIII!!!!!
 
 	@RequestMapping(value = "/questions/{questionId}/answers", method = RequestMethod.POST)
-	public @ResponseBody Answer saveAnswerRest(@RequestBody Answer answer) {
+	public @ResponseBody Answer saveAnswerRest(@PathVariable("id") Question id, @RequestBody Answer answer) {
+		answer.setQuestionById(id);
 		return arepository.save(answer);
 		}
 	

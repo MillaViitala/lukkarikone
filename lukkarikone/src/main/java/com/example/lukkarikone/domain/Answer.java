@@ -23,7 +23,7 @@ public class Answer {
 		
 	}
 	
-	public Answer(String text, Question id) {
+	public Answer(String text, Question question) {
 		super();
 		this.text = text;
 		this.question = question;
@@ -50,8 +50,8 @@ public class Answer {
 		return question;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setQuestionById(Question id) {
+		this.question = id;
 	}
 
 	@Override
