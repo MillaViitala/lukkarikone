@@ -3,6 +3,7 @@ package com.example.lukkarikone.web;
 import com.example.lukkarikone.domain.Answer;
 
 import com.example.lukkarikone.domain.AnswerRepository;
+import com.example.lukkarikone.domain.Question;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +31,28 @@ public class AnswerController {
 	// Hae vastaukset kysymykselle
 	
 	@RequestMapping(value = "questions/{questionId}/answers", method = RequestMethod.GET)
-	public @ResponseBody Optional<Answer> getAnswer(@PathVariable ("id") Long answerId, Model model) {
+	public @ResponseBody Optional<Answer> getAnswer(@PathVariable ("id") Long id, Model model) {
 		
-		return arepository.findById(answerId);
+		return arepository.findById(id);
 		
 	}
 	
 	// Tallenna vastaus
 	
-	@PostMapping(value = "/questions/{questionId}/answers", consumes = "application/json")
-    public ResponseEntity saveAnswer(@RequestBody Answer answer, Model model) {
-        arepository.save(answer);
-        return (ResponseEntity) arepository;
+	
+	
+	@RequestMapping(value = "/questions/{questionId}/answers", method = RequestMethod.POST)
+	public @ResponseBody Answer saveAnswerRest(@RequestBody Answer answer) {
+		return arepository.save(answer);
+		}
+	
+	/*
+	 * // RESTful service to save new car 
+    @RequestMapping(value="/cars", method = RequestMethod.POST)
+    public @ResponseBody Car saveCarRest(@RequestBody Car car) {	
+    	return carRepository.save(car);
     }
+	 */
 	
 	
 }
