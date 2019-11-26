@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.lukkarikone.domain.AnswerRepository;
 import com.example.lukkarikone.domain.Question;
 import com.example.lukkarikone.domain.QuestionRepository;
 
@@ -30,6 +31,7 @@ public class LukkarikoneApplication {
 			qrepository.save(new Question("Kuinka työlääksi koet palvelun käyttämisen? (Monivalinta)"));
 			qrepository.save(new Question("Kuinka nopeasti/tehokkaasti saat suoritettua halutun lopputuloksen palvelusta? (Monivalinta)"));
 			qrepository.save(new Question("Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)"));
+			
 			
 			log.info("get all questions");
 			for (Question question : qrepository.findAll()) {

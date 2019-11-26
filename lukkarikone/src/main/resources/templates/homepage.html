@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>REST Home Page</title>
+</head>
+<body>
+<h1>REST Home Page</h1>
+
+	<h2>All Questions</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/questions">/questions</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>[
+  {
+    "id": 1,
+    "qtitle": "Monennellako vuosikurssilla olet?"
+  },
+  {
+    "id": 5,
+    "qtitle": "Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)"
+  }
+]</code></pre>
+
+	<h2>Question by Id</h2>
+	<p>
+		<strong>GET </strong><strong> /questions/{id} </strong> <strong>
+		<a href="/questions/2">/questions/2</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+    "id": 1,
+    "qtitle": "Monennellako vuosikurssilla olet?"
+}</code></pre>
+	<h2>New Question</h2>
+	<p>
+		<strong>POST </strong> <strong> /questions</strong> (Test
+		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+    "qtitle": "Mitä tämä kysymys tarkoittaa?"
+}</code></pre>
+        <h2>Delete Question</h2>
+        <p>
+	<strong>DELETE </strong> <strong> /questions/{id}</strong> (Test
+                with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+        </p>
+</body>
+</html>
