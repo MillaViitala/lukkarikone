@@ -60,14 +60,13 @@ public class SurveyController {
     }
     
     // Muokkaa kysymystä
-    /*@RequestMapping(value = "/question/{id}", consumes = "application/json")
-    public ResponseEntity editQuestion(@PathVariable("id") Long questionId, Model model) {
+    @RequestMapping(value = "/questions/{id}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity editQuestion (@PathVariable("id") Long questionId, @RequestBody Question question, Model model) {
     	model.addAttribute("question", qrepository.findById(questionId));
-    	Question q = qrepository.findById(questionId);
-    	q.setQtitle(qtitle);
+    	Question q = qrepository.findById(questionId).get();
+    	q.setQtitle(question.getQtitle());
     	qrepository.save(q);
     	return new ResponseEntity<>("Question updated!", HttpStatus.OK);
     }
-   */ 
     
 }
