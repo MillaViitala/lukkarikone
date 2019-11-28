@@ -59,5 +59,15 @@ public class SurveyController {
         return new ResponseEntity<>("Question with id: " + questionId + " deleted!", HttpStatus.OK);
     }
     
+    // Muokkaa kysymystä
+    /*@RequestMapping(value = "/question/{id}", consumes = "application/json")
+    public ResponseEntity editQuestion(@PathVariable("id") Long questionId, Model model) {
+    	model.addAttribute("question", qrepository.findById(questionId));
+    	Question q = qrepository.findById(questionId);
+    	q.setQtitle(qtitle);
+    	qrepository.save(q);
+    	return new ResponseEntity<>("Question updated!", HttpStatus.OK);
+    }
+   */ 
     
 }

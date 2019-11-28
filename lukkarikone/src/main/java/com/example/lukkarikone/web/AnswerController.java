@@ -1,10 +1,12 @@
 package com.example.lukkarikone.web;
 
 import com.example.lukkarikone.domain.Answer;
-
+import java.util.List;
 import com.example.lukkarikone.domain.AnswerRepository;
 import com.example.lukkarikone.domain.Question;
 import com.example.lukkarikone.domain.QuestionRepository;
+
+
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,10 @@ public class AnswerController {
 	// Hae vastaukset kysymykselle
 	
 	@RequestMapping(value = "questions/{questionId}/answers", method = RequestMethod.GET)
-	public @ResponseBody Optional<Answer> getAnswer(@PathVariable ("id") Long id, Model model) {
-		return arepository.findById(id);
+	public @ResponseBody List<Answer> getAnswer(@PathVariable ("questionId") Long questionId) {
+		Question question = new Question();
+		question.setId(questionId);
+		return arepository.findByQuestion(question);
 		
 	}
 	
