@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Question {
@@ -12,14 +14,26 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String qtitle;
+	
+	@OneToMany
+	@JoinColumn(name = "categoryId")
+	private QuestionCategory category;
 
-	public Question() {
+	public Question(String string) {
 
 	}
 
-	public Question(String qtitle) {
+	public Question() {
 		super();
 		this.qtitle = qtitle;
+	}
+	
+	public QuestionCategory getCategory() {
+		return category;
+	}
+	
+	public void setCategory(QuestionCategory category) {
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -40,7 +54,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id= " + id + ", qtitle=" + qtitle + "]";
+		return "Question [id= " + id + ", qtitle=" + qtitle + "category" + category + "]";
 	}
 
 }
