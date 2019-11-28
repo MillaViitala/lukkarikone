@@ -1,18 +1,18 @@
 package com.example.lukkarikone.domain;
 
-import java.util.Map;
+import java.util.List;
 
 public class MultichoiceQuestion extends Question {
 
-    Map<Integer, String> choicesList;
+    List<String> choicesList;
 
-    public MultichoiceQuestion(String qTitle, Map<Integer, String> choicesList) {
+    public MultichoiceQuestion(String qTitle, List<String> choicesList) {
         super(qTitle);
         this.choicesList = choicesList;
     }
 
     public void addChoice(final String choice) {
-        choicesList.put(choicesList.size(), choice);
+        choicesList.add(choice);
     }
 
     public void removeChoiceById(final int choiceId) {
@@ -20,7 +20,7 @@ public class MultichoiceQuestion extends Question {
     }
     
     public void removeChoiceByTitle(String choice) {
-        choicesList.values().removeIf(value -> value.equals(choice));
+        choicesList.removeIf(value -> value.equals(choice));
     }
 
 }
