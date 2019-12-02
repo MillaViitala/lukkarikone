@@ -1,6 +1,8 @@
 package com.example.lukkarikone.web;
 
+import com.example.lukkarikone.domain.ChoiceRepository;
 import com.example.lukkarikone.domain.Question;
+import com.example.lukkarikone.domain.QuestionChoice;
 import com.example.lukkarikone.domain.QuestionRepository;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,8 @@ public class SurveyController {
 
     @Autowired
     private QuestionRepository qrepository;
+    @Autowired
+    private ChoiceRepository crepository;
 
     // REST homepage
     @RequestMapping(value = "/homepage")
@@ -58,15 +62,48 @@ public class SurveyController {
         qrepository.deleteById(questionId);
         return new ResponseEntity<>("Question with id: " + questionId + " deleted!", HttpStatus.OK);
     }
-    
+
     // Muokkaa kysymystä
     @RequestMapping(value = "/questions/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity editQuestion (@PathVariable("id") Long questionId, @RequestBody Question question, Model model) {
-    	model.addAttribute("question", qrepository.findById(questionId));
-    	Question q = qrepository.findById(questionId).get();
-    	q.setQtitle(question.getQtitle());
-    	qrepository.save(q);
-    	return new ResponseEntity<>("Question updated!", HttpStatus.OK);
+    public ResponseEntity editQuestion(@PathVariable("id") Long questionId, @RequestBody Question question, Model model) {
+        model.addAttribute("question", qrepository.findById(questionId));
+        Question q = qrepository.findById(questionId).get();
+        q.setQtitle(question.getQtitle());
+        qrepository.save(q);
+        return new ResponseEntity<>("Question updated!", HttpStatus.OK);
     }
-    
+
+    // Hae vaihtoehdot
+    @RequestMapping(value = "questions/{questionId}/choices", method = RequestMethod.GET)
+    public @ResponseBody
+    List<QuestionChoice> getChoices(@PathVariable("questionId") Long questionId) {
+        Question question = new Question();
+        question.setId(questionId);
+        return crepository.findByQuestion(question);
+    }
+
+    //tallenna vaihtoehto
+    @RequestMapping(value = "/questions/{questionId}/choices", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity saveChoice(@PathVariable("questionId") Long questionId, @RequestBody QuestionChoice choice) {
+        Question question = qrepository.findById(questionId).get();
+        choice.setQuestion(question);
+        crepository.save(choice);
+        return new ResponseEntity<>("Choice added!", HttpStatus.OK);
+    }
+
+    //poista vaihtoehto
+    @DeleteMapping(value = "/questions/{id}/choices/{choiceId}")
+    public ResponseEntity deleteChoice(@PathVariable("id") Long questionId, @PathVariable("choiceId") Long choiceId, Model model) {
+        Question question = qrepository.findById(questionId).get();
+        List<QuestionChoice> choices = crepository.findByQuestion(question);
+        QuestionChoice choice = crepository.findById(choiceId).get();
+        if (choices.contains(choice)) {
+            crepository.deleteById(choiceId);
+            return new ResponseEntity<>("Choice: " + choice.getText() + " deleted!", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Choice does not exist in this question!", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

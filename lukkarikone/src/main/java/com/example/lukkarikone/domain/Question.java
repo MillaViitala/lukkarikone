@@ -10,51 +10,56 @@ import javax.persistence.OneToMany;
 @Entity
 public class Question {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String qtitle;
-	
-	@OneToMany
-	@JoinColumn(name = "categoryId")
-	private QuestionCategory category;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String qtitle;
 
-	public Question(String string) {
+    @OneToMany
+    @JoinColumn(name = "categoryId")
+    private QuestionCategory category;
 
-	}
+    public Question() {
+    }
 
-	public Question() {
-		super();
-		this.qtitle = qtitle;
-	}
-	
-	public QuestionCategory getCategory() {
-		return category;
-	}
-	
-	public void setCategory(QuestionCategory category) {
-		this.category = category;
-	}
+    public Question(String qtitle) {
+        super();
+        this.qtitle = qtitle;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Question(String qtitle, QuestionCategory category) {
+        super();
+        this.qtitle = qtitle;
+        this.category = category;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public QuestionCategory getCategory() {
+        return category;
+    }
 
-	public String getQtitle() {
-		return qtitle;
-	}
+    public void setCategory(QuestionCategory category) {
+        this.category = category;
+    }
 
-	public void setQtitle(String qtitle) {
-		this.qtitle = qtitle;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	@Override
-	public String toString() {
-		return "Question [id= " + id + ", qtitle=" + qtitle + "category" + category + "]";
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getQtitle() {
+        return qtitle;
+    }
+
+    public void setQtitle(String qtitle) {
+        this.qtitle = qtitle;
+    }
+
+    @Override
+    public String toString() {
+        return "Question [id= " + id + ", qtitle=" + qtitle + "category" + category + "]";
+    }
 
 }
