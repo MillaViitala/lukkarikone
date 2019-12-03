@@ -1,5 +1,6 @@
 package com.example.lukkarikone.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class Question {
     @JoinColumn(name = "categoryId")
     private QuestionCategory category;
 
+    @JsonIgnoreProperties("questionId")
     @OneToMany(mappedBy = "question")
     private Set<QuestionChoice> choices;
 
