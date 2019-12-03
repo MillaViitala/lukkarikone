@@ -14,10 +14,10 @@ public class QuestionChoice {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long choiceId;
 	private String text;
-	
-	@ManyToOne
-	@JoinColumn(name = "id")
-	private Question question;
+        
+        @ManyToOne
+        @JoinColumn(name="id")
+        private Question question;
 	
 	public QuestionChoice() {
 	}
@@ -25,7 +25,6 @@ public class QuestionChoice {
 	public QuestionChoice(String text, Question question) {
 		super();
 		this.text = text;
-		this.question = question;
 		
 	}
 
@@ -45,10 +44,10 @@ public class QuestionChoice {
 		this.text = text;
 	}
 
-	public Question getQuestion() {
+	public Question getQuestionId() {
 		return question;
 	}
-	
+
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
@@ -56,7 +55,7 @@ public class QuestionChoice {
 
 	@Override
 	public String toString() {
-		return "QuestionChoice id=" + choiceId + ", text=" + text + ", QuestionId=" + question + "]";
+		return "QuestionChoice id=" + choiceId + ", text=" + text + "]";
 	}
 
 }

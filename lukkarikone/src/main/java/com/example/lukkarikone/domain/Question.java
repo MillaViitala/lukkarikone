@@ -1,5 +1,6 @@
 package com.example.lukkarikone.domain;
 
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Question {
@@ -20,6 +20,9 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "categoryId")
     private QuestionCategory category;
+
+    @OneToMany(mappedBy = "question")
+    private Set<QuestionChoice> choices;
 
     public Question() {
     }
@@ -59,9 +62,17 @@ public class Question {
         this.qtitle = qtitle;
     }
 
+    public Set<QuestionChoice> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(Set<QuestionChoice> choices) {
+        this.choices = choices;
+    }
+
     @Override
     public String toString() {
-        return "Question [id= " + id + ", qtitle=" + qtitle + "category" + category + "]";
+        return "Question [id= " + id + ", qtitle=" + qtitle + ", category=" + category + "]";
     }
 
 }

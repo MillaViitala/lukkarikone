@@ -13,16 +13,15 @@ public class QuestionCategory {
 
     //attribuutit
     private Long categoryId;
-    private String categoryName;
+    private Category category;
 
     //konstruktorit
     public QuestionCategory() {
     }
 
-    public QuestionCategory(Long categoryId, String categoryName) {
+    public QuestionCategory(Category categoryName) {
         super();
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
+        this.category = categoryName;
     }
 
     //setterit ja getterit
@@ -34,18 +33,18 @@ public class QuestionCategory {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Category getCategoryName() {
+        return category;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setCategoryName(Category category) {
+        this.category = category;
     }
 
     //to-string
     @Override
     public String toString() {
-        return "QuestionCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
+        return "QuestionCategory [categoryId=" + categoryId + ", categoryName=" + category + "]";
     }
 
 }
