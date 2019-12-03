@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Question {
@@ -15,7 +16,7 @@ public class Question {
     private Long id;
     private String qtitle;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "categoryId")
     private QuestionCategory category;
 
