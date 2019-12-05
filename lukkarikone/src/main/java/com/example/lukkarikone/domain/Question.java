@@ -25,6 +25,10 @@ public class Question {
     @JsonIgnoreProperties("questionId")
     @OneToMany(mappedBy = "question")
     private Set<QuestionChoice> choices;
+    
+    @OneToMany
+    @JoinColumn(name = "questionId")
+    private Set<Answer> answers;
 
     public Question() {
     }
@@ -71,6 +75,13 @@ public class Question {
     public void setChoices(Set<QuestionChoice> choices) {
         this.choices = choices;
     }
+    public Set<Answer> getAnswers() {
+    	return answers;
+    }
+    
+    public void setAnswers(Set<Answer> answers) {
+		this.answers = answers;
+	}
 
     @Override
     public String toString() {
