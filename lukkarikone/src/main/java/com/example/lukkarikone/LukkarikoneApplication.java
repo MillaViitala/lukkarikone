@@ -8,7 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.lukkarikone.domain.AnswerRepository;
+import com.example.lukkarikone.domain.ChoiceRepository;
 import com.example.lukkarikone.domain.Question;
+import com.example.lukkarikone.domain.QuestionCategory;
+import com.example.lukkarikone.domain.QuestionChoice;
 import com.example.lukkarikone.domain.QuestionRepository;
 
 @SpringBootApplication
@@ -25,12 +28,17 @@ public class LukkarikoneApplication {
 	public CommandLineRunner surveyDemo(QuestionRepository qrepository) {
 		return (args) -> {
 			log.info("save questions");
+			Question one = new Question("Monennellako vuosikurssilla olet?");
+			qrepository.save(one);
+			Question two = new Question("Millä seuraavista mieluiten etsit kurssin ajankohdan lukkarikoneesta: (Monivalinta -vaihtoehdot tulossa)");
+			qrepository.save(two);
+			Question three = new Question("Kuinka työlääksi koet palvelun käyttämisen? (Monivalinta)");
+			qrepository.save(three);
+			Question four = new Question("Kuinka nopeasti/tehokkaasti saat suoritettua halutun lopputuloksen palvelusta? (Monivalinta)");
+			qrepository.save(four);
+			Question five = new Question("Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)");
+			qrepository.save(five);
 			
-			qrepository.save(new Question("Monennellako vuosikurssilla olet?"));
-			qrepository.save(new Question("Millä seuraavista mieluiten etsit kurssin ajankohdan lukkarikoneesta: (Monivalinta -vaihtoehdot tulossa)"));
-			qrepository.save(new Question("Kuinka työlääksi koet palvelun käyttämisen? (Monivalinta)"));
-			qrepository.save(new Question("Kuinka nopeasti/tehokkaasti saat suoritettua halutun lopputuloksen palvelusta? (Monivalinta)"));
-			qrepository.save(new Question("Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)"));
 			
 			
 			log.info("get all questions");
