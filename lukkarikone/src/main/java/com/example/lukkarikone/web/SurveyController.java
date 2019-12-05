@@ -1,7 +1,9 @@
 package com.example.lukkarikone.web;
 
+import com.example.lukkarikone.domain.CategoryRepository;
 import com.example.lukkarikone.domain.ChoiceRepository;
 import com.example.lukkarikone.domain.Question;
+import com.example.lukkarikone.domain.QuestionCategory;
 import com.example.lukkarikone.domain.QuestionChoice;
 import com.example.lukkarikone.domain.QuestionRepository;
 import java.util.List;
@@ -27,7 +29,9 @@ public class SurveyController {
     @Autowired
     private QuestionRepository qrepository;
     @Autowired
-    private ChoiceRepository crepository;
+    private ChoiceRepository choicerepo;
+    @Autowired
+    private CategoryRepository categoryrepo;
 
     // REST homepage
     @RequestMapping(value = "/homepage")
@@ -52,7 +56,8 @@ public class SurveyController {
     //update: tallenna kysymys
     @PostMapping(value = "/questions", consumes = "application/json")
     public ResponseEntity saveQuestion(@RequestBody Question question, Model model) {
-        qrepository.save(new Question(question.getQtitle()));
+        QuestionCategory category = categoryrepo.findByCategory(question.getCategory().getCategory());
+        qrepository.save(new Question(question.getQtitle(), category));
         return new ResponseEntity<>("Question created!", HttpStatus.OK);
     }
 
@@ -79,7 +84,7 @@ public class SurveyController {
     List<QuestionChoice> getChoices(@PathVariable("questionId") Long questionId) {
         Question question = new Question();
         question.setId(questionId);
-        return crepository.findByQuestion(question);
+        return choicerepo.findByQuestion(question);
     }
 
     //tallenna vaihtoehto
@@ -88,7 +93,7 @@ public class SurveyController {
     ResponseEntity saveChoice(@PathVariable("questionId") Long questionId, @RequestBody QuestionChoice choice) {
         Question question = qrepository.findById(questionId).get();
         choice.setQuestion(question);
-        crepository.save(choice);
+        choicerepo.save(choice);
         return new ResponseEntity<>("Choice added!", HttpStatus.OK);
     }
 
@@ -96,10 +101,10 @@ public class SurveyController {
     @DeleteMapping(value = "/questions/{id}/choices/{choiceId}")
     public ResponseEntity deleteChoice(@PathVariable("id") Long questionId, @PathVariable("choiceId") Long choiceId, Model model) {
         Question question = qrepository.findById(questionId).get();
-        List<QuestionChoice> choices = crepository.findByQuestion(question);
-        QuestionChoice choice = crepository.findById(choiceId).get();
+        List<QuestionChoice> choices = choicerepo.findByQuestion(question);
+        QuestionChoice choice = choicerepo.findById(choiceId).get();
         if (choices.contains(choice)) {
-            crepository.deleteById(choiceId);
+            choicerepo.deleteById(choiceId);
             return new ResponseEntity<>("Choice: " + choice.getText() + " deleted!", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Choice does not exist in this question!", HttpStatus.NOT_FOUND);

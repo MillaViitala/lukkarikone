@@ -33,11 +33,11 @@ public class QuestionCategory {
         this.categoryId = categoryId;
     }
 
-    public Category getCategoryName() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategoryName(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
