@@ -91,8 +91,6 @@ public class SurveyController {
     @RequestMapping(value = "/questions/{questionId}/choices", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity saveChoice(@PathVariable("questionId") Long questionId, @RequestBody QuestionChoice choice) {
-        Question question = qrepository.findById(questionId).get();
-        choice.setQuestion(question);
         choicerepo.save(choice);
         return new ResponseEntity<>("Choice added!", HttpStatus.OK);
     }
