@@ -46,8 +46,6 @@ public class LukkarikoneApplication {
             qrepository.save(four);
             Question five = new Question("Vapaa palaute nykyisestä palvelusta/risut ja ruusut (Avoin boksi)");
             qrepository.save(five);
-            Question six = new Question("testi", cat3);
-            qrepository.save(six);
 
             log.info("get all questions");
             for (Question question : qrepository.findAll()) {
