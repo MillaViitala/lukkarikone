@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class QuestionCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     //attribuutit
     private Long categoryId;

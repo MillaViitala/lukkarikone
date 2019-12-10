@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class QuestionChoice {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long choiceId;
 	private String text;
         
