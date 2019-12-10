@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class QuestionChoice {
@@ -27,6 +26,7 @@ public class QuestionChoice {
 	public QuestionChoice(String text, Question question) {
 		super();
 		this.text = text;
+                this.question = question;
 		
 	}
 

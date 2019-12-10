@@ -5,4 +5,5 @@ public enum Category {
     checkbox,
     radiobox,
     textbox;
+
 }
