@@ -2,6 +2,7 @@ package com.example.lukkarikone.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,9 +24,9 @@ public class Question {
     private QuestionCategory category;
 
     @JsonIgnoreProperties("questionId")
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<QuestionChoice> choices;
-    
+
     @OneToMany
     @JoinColumn(name = "questionId")
     private Set<Answer> answers;
@@ -75,13 +76,14 @@ public class Question {
     public void setChoices(Set<QuestionChoice> choices) {
         this.choices = choices;
     }
+
     public Set<Answer> getAnswers() {
-    	return answers;
+        return answers;
     }
-    
+
     public void setAnswers(Set<Answer> answers) {
-		this.answers = answers;
-	}
+        this.answers = answers;
+    }
 
     @Override
     public String toString() {
