@@ -1,11 +1,8 @@
 package com.example.lukkarikone;
 
-import com.example.lukkarikone.domain.Category;
 import com.example.lukkarikone.domain.CategoryRepository;
 import com.example.lukkarikone.domain.ChoiceRepository;
 import com.example.lukkarikone.domain.Question;
-import com.example.lukkarikone.domain.QuestionCategory;
-import com.example.lukkarikone.domain.QuestionChoice;
 import com.example.lukkarikone.domain.QuestionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +24,7 @@ public class LukkarikoneApplication {
     public CommandLineRunner surveyDemo(QuestionRepository qrepository, CategoryRepository catrepo, ChoiceRepository chorepo) {
         return (args) -> {
 
+            /*
             log.info("save categories");
             
             QuestionCategory checkbox = new QuestionCategory(Category.checkbox);
@@ -75,6 +73,7 @@ public class LukkarikoneApplication {
             
             Question five = new Question("Vapaa palaute nykyisestä palvelusta:", textbox);
             qrepository.save(five);
+            */
 
             log.info("get all questions");
             for (Question question : qrepository.findAll()) {
