@@ -27,8 +27,8 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<QuestionChoice> choices;
 
-    @OneToMany
-    @JoinColumn(name = "questionId")
+    @JsonIgnoreProperties("question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Answer> answers;
 
     public Question() {
