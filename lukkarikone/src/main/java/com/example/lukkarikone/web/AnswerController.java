@@ -42,7 +42,7 @@ public class AnswerController {
         Question question = qrepository.findById(questionId).get();
         answer.setQuestion(question);
         arepository.save(answer);
-        return new ResponseEntity<>("Choice added!", HttpStatus.OK);
+        return new ResponseEntity<>("Answer added!", HttpStatus.OK);
     }
 
 }
